@@ -1,6 +1,13 @@
 
 # Evodistance
 
+Meneco++ uses phylogenetic distances to prioritize reactions that are closer to the reconstructed organism. To do this, meneco++ needs a measure of that distance. We are trying to build a benchmark, using an incomplete *E. coli* model as the target of reconstruction, and *Metacyc* as a source of reactions to be used as patches.
+
+During our first try at the benchmark, we used existing databases to obtain the phylogenetic distances between *E. coli* and the rest of the organisms in *Metacyc*. With this `Old Protocol`, we covered around 50% of the needed distances.
+
+Now, instead of using existing distance databases, we developed a `New Protocol` that computes distances, based on the edit distances between 16S genes.
+
+
 ## Old protocol
 
 To compute the evolutionary distance between *E. coli* and the rest of the organisms in MetaCyc, we used existing data from Roundup (http://roundup.hms.harvard.edu/) and MetaCyc itself.
