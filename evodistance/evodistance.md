@@ -14,14 +14,14 @@ To compute the evolutionary distance between *E. coli* and the rest of the organ
 
 Roundup stores orthology of genes between thousands of organisms. It uses the Reciprocal Smallest Distance algorithm (RSD), so it stores an estimated evolutionary distance between genes.
 
-Our idea was to use the measurements from Roundup, to establish the evolutionary distance between the 16S genes of the organisms in Metacyc. In general terms, we took the *E. coli* 16S, obtained the evo distance to 16S of other organisms (via Roundup), matched those organism's names with Metacyc names, and used the 16S distance as an proxy for real evolutionary distance. The precise steps were: 
+Our idea was to use the measurements from Roundup, to establish the evolutionary distance between the 16S genes of the organisms in Metacyc. In general terms, we took the *E. coli* 16S, obtained the evo distance to 16S of other organisms (via Roundup), matched those organism's names with Metacyc names, and used the 16S distance as a proxy for real evolutionary distance. The precise steps were: 
 
 
 1. Obtain Roundup 3 precomputed orthologies from:  http://roundup.hms.harvard.edu/download/. I used `roundup-3-orthologs_0.5_1e-10.txt.gz`.
 
-1. Extract list of organisms from Roundup website (see `listaOrganismos.txt`, attached)
+1. Extract list of organisms from Roundup website (see `listaOrganismos.txt` in `data/`)
 
-1. Get Metacyc dump of reactions+organisms (see `reaction_organism_MetaCyc.txt`, attached)
+1. Get Metacyc dump of reactions+organisms (see `reaction_organism_MetaCyc.txt` in `data/`)
 
 1. Translate roundup names to metacyc names, as best as we can:
 
@@ -41,7 +41,9 @@ zgrep "^PA\|P06992" roundup-3-orthologs_0.5_1e-10.txt.gz > ecolik12-others
 
 1. Generate an ASP compatible file with distance facts:
 
-	`python metacycDistances.py distance_ecoli_others.txt tranlations.txt  > ecoli-mcyc-dist.lp`
+	```
+	python metacycDistances.py distance_ecoli_others.txt tranlations.txt  > ecoli-mcyc-dist.lp
+	```
 	
 This protocol was not completely successful, given: the difficulties to map organism names between roundup and metacyc, metacyc organisms not accounted for in roundup, and a very limited mapping between reactions and organism in metacyc (about 11 reactions per organism, in average).
 
@@ -71,7 +73,7 @@ zgrep "^>" release11_2_Bacteria_unaligned.fa.gz > release11_2.signature
 python matchNames.py release11_2.names reaction_organism_MetaCyc.txt > translation_rdp.txt
 ```
 
-	This generated translations for the 1 136 different metacyc names, except for 127 "NOT FOUND".
+	This generated translations for the 1,136 different metacyc names, except for 127 "NOT FOUND".
 
 5. Obtain the 16S sequence for all of Metacyc's organisms:
 
