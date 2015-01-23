@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1" xmlns:html="http://www.w3.org/1999/xhtml">
+  <model id="MODELID_1461534" name="E. coli iJR904">
+  <listOfUnitDefinitions>
+  <unitDefinition id="mmol_per_gDW_per_hr">
+  <listOfUnits>
+  <unit kind="mole" scale="-3" multiplier="1" offset="0" />
+  <unit kind="gram" exponent="-1" multiplier="1" offset="0" />
+  <unit kind="second" exponent="-1" multiplier="0.00027777" offset="0" />
+  </listOfUnits>
+  </unitDefinition>
+  </listOfUnitDefinitions>
+  <listOfCompartments>
+  <compartment id="C_e" name="Extraorganism"/>
+  <compartment id="C_c" name="Cytosol"/>
+  </listOfCompartments>
+  <listOfSpecies>
+<species id="M_glu_DASH_L_c" name="glu_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_cu2_c" name="cu2_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_arg_DASH_L_c" name="arg_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_atp_c" name="atp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_mobd_c" name="mobd_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_mlthf_c" name="mlthf_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_ribflv_c" name="ribflv_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_amet_c" name="amet_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_tyr_DASH_L_c" name="tyr_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_dttp_c" name="dttp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_cobalt2_c" name="cobalt2_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_val_DASH_L_c" name="val_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_k_c" name="k_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_10fthf_c" name="10fthf_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_pro_DASH_L_c" name="pro_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_asp_DASH_L_c" name="asp_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_fe3_c" name="fe3_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_h2o_c" name="h2o_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_nad_c" name="nad_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_fe2_c" name="fe2_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_ni2_c" name="ni2_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_gly_c" name="gly_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_nadp_c" name="nadp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_ser_DASH_L_c" name="ser_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_coa_c" name="coa_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_thmpp_c" name="thmpp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_cl_c" name="cl_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_gtp_c" name="gtp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_lys_DASH_L_c" name="lys_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_thf_c" name="thf_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_phe_DASH_L_c" name="phe_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_ile_DASH_L_c" name="ile_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_leu_DASH_L_c" name="leu_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_trp_DASH_L_c" name="trp_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_thr_DASH_L_c" name="thr_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_btn_c" name="btn_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_his_DASH_L_c" name="his_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_utp_c" name="utp_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_mn2_c" name="mn2_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_gln_DASH_L_c" name="gln_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_met_DASH_L_c" name="met_DASH_L_c" compartment="C_e" boundaryCondition="false"/>
+<species id="M_mg2_c" name="mg2_c" compartment="C_e" boundaryCondition="false"/>
+</listOfSpecies>
+<listOfReactions>
+</listOfReactions>
+</model>
+</sbml>

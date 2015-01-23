@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1" xmlns:html="http://www.w3.org/1999/xhtml">
+<model id="MODELID_1461534" name="E. coli iJR904">
+<listOfUnitDefinitions>
+<unitDefinition id="mmol_per_gDW_per_hr">
+<listOfUnits>
+<unit kind="mole" scale="-3" multiplier="1" offset="0" />
+<unit kind="gram" exponent="-1" multiplier="1" offset="0" />
+<unit kind="second" exponent="-1" multiplier="0.00027777" offset="0" />
+</listOfUnits>
+</unitDefinition>
+</listOfUnitDefinitions>
+<listOfCompartments>
+<compartment id="C_e" name="Extraorganism"/>
+<compartment id="C_c" name="Cytosol"/>
+</listOfCompartments>
+<listOfSpecies>
+<species id="M_adp_c" name="M_trp_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_trp_DASH_L_b" name="M_trp_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_uri_b" name="M_uri_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glcr_b" name="M_glcr_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glcn_b" name="M_glcn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glu_DASH_L_b" name="M_glu_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_malthx_b" name="M_malthx_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_12ppd_DASH_S_b" name="M_12ppd_DASH_S_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_galur_b" name="M_galur_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_thymd_b" name="M_thymd_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_galt_b" name="M_galt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tre_b" name="M_tre_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_val_DASH_L_b" name="M_val_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_leu_DASH_L_b" name="M_leu_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_succ_b" name="M_succ_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_o2_b" name="M_o2_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tma_b" name="M_tma_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_mal_DASH_L_b" name="M_mal_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_din_b" name="M_din_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_galct_DASH_D_b" name="M_galct_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_malttr_b" name="M_malttr_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_h2o_b" name="M_h2o_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_cys_DASH_L_b" name="M_cys_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_pi_b" name="M_pi_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tmao_b" name="M_tmao_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_so4_b" name="M_so4_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_nad_b" name="M_nad_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_alltn_b" name="M_alltn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_thm_b" name="M_thm_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_lys_DASH_L_b" name="M_lys_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_pnto_DASH_R_b" name="M_pnto_DASH_R_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_h_b" name="M_h_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_mnl_b" name="M_mnl_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ala_DASH_D_b" name="M_ala_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_2ddglcn_b" name="M_2ddglcn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_15dap_b" name="M_15dap_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glyb_b" name="M_glyb_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gly_b" name="M_gly_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_co2_b" name="M_co2_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ins_b" name="M_ins_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_g6p_b" name="M_g6p_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_man_b" name="M_man_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_met_DASH_D_b" name="M_met_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_pro_DASH_L_b" name="M_pro_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ade_b" name="M_ade_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_man6p_b" name="M_man6p_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_4abut_b" name="M_4abut_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_orn_b" name="M_orn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_hdca_b" name="M_hdca_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_sucr_b" name="M_sucr_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gam_b" name="M_gam_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_melib_b" name="M_melib_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_pppn_b" name="M_pppn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_fuc1p_DASH_L_b" name="M_fuc1p_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gsn_b" name="M_gsn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_indole_b" name="M_indole_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_fum_b" name="M_fum_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_amp_b" name="M_amp_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ala_DASH_L_b" name="M_ala_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_arg_DASH_L_b" name="M_arg_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_acgam_b" name="M_acgam_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_akg_b" name="M_akg_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ser_DASH_D_b" name="M_ser_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glcur_b" name="M_glcur_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ser_DASH_L_b" name="M_ser_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ac_b" name="M_ac_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_xan_b" name="M_xan_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_asp_DASH_L_b" name="M_asp_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_xyl_DASH_D_b" name="M_xyl_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_crn_b" name="M_crn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_maltttr_b" name="M_maltttr_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_chol_b" name="M_chol_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_k_b" name="M_k_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dad_DASH_2_b" name="M_dad_DASH_2_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_galctn_DASH_D_b" name="M_galctn_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_cit_b" name="M_cit_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_acmana_b" name="M_acmana_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dgsn_b" name="M_dgsn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_xtsn_b" name="M_xtsn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_duri_b" name="M_duri_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_cynt_b" name="M_cynt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_met_DASH_L_b" name="M_met_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dha_b" name="M_dha_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tyr_DASH_L_b" name="M_tyr_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glc_DASH_D_b" name="M_glc_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_cytd_b" name="M_cytd_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_phe_DASH_L_b" name="M_phe_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_fuc_DASH_L_b" name="M_fuc_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_adn_b" name="M_adn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_acnam_b" name="M_acnam_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_pyr_b" name="M_pyr_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dms_b" name="M_dms_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_fe2_b" name="M_fe2_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ptrc_b" name="M_ptrc_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_asn_DASH_L_b" name="M_asn_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_sbt_DASH_D_b" name="M_sbt_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gua_b" name="M_gua_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_etoh_b" name="M_etoh_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_nh4_b" name="M_nh4_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_3hcinnm_b" name="M_3hcinnm_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dmso_b" name="M_dmso_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_thr_DASH_L_b" name="M_thr_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glyc_b" name="M_glyc_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_but_b" name="M_but_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gln_DASH_L_b" name="M_gln_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_urea_b" name="M_urea_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_lac_DASH_D_b" name="M_lac_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_na1_b" name="M_na1_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ile_DASH_L_b" name="M_ile_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_idon_DASH_L_b" name="M_idon_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_rmn_b" name="M_rmn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_hxan_b" name="M_hxan_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_arab_DASH_L_b" name="M_arab_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ocdca_b" name="M_ocdca_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_26dap_DASH_M_b" name="M_26dap_DASH_M_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_taur_b" name="M_taur_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_nmn_b" name="M_nmn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_spmd_b" name="M_spmd_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_for_b" name="M_for_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glyclt_b" name="M_glyclt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_maltpt_b" name="M_maltpt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_rib_DASH_D_b" name="M_rib_DASH_D_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ura_b" name="M_ura_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_malt_b" name="M_malt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glyc3p_b" name="M_glyc3p_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tsul_b" name="M_tsul_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_tartr_DASH_L_b" name="M_tartr_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_3hpppn_b" name="M_3hpppn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_no2_b" name="M_no2_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_no3_b" name="M_no3_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gal_b" name="M_gal_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_dcyt_b" name="M_dcyt_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_csn_b" name="M_csn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_acac_b" name="M_acac_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_cbl1_b" name="M_cbl1_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_nac_b" name="M_nac_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_ttdca_b" name="M_ttdca_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_gbbtn_b" name="M_gbbtn_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_glyald_b" name="M_glyald_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_his_DASH_L_b" name="M_his_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_lac_DASH_L_b" name="M_lac_DASH_L_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_fru_b" name="M_fru_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_acald_b" name="M_acald_b" compartment="C_b" boundaryCondition="true"/>
+<species id="M_lcts_b" name="M_lcts_b" compartment="C_b" boundaryCondition="true"/>
+</listOfSpecies>
+<listOfReactions>
+</listOfReactions>
+</model>
+</sbml>
