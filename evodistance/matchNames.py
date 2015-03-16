@@ -36,11 +36,11 @@ translation=dict()
 
 log("Parsing metacyc names")
 
-linecount=0
+# linecount=0
 for line in open(metacycNames):
-	linecount += 1
-	if linecount == 20:
-		sys.exit(1)
+	# linecount += 1
+	#if linecount == 20:
+	#	sys.exit(1)
 
 	elems=line[:-1].split('\t')
 	mcname=elems[2]
