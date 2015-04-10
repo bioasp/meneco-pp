@@ -14,10 +14,13 @@
 \usepackage{textcomp}
 \usepackage{fullpage}
 \usepackage{graphicx}
+\usepackage{xspace}
+
+\newcommand{\Meneco}{Meneco$^{++}$\xspace}
+\newcommand{\meneco}{meneco$^{++}$\xspace}
 
 
-
-\title{Meneco++: philogenetic distance based, gap-filling of metabolic networks}
+\title{\Meneco: philogenetic distance based, gap-filling of metabolic networks}
 
 \author{Nicolas Loira\textsuperscript{1,*},
 Sven Thiele\textsuperscript{2},
@@ -41,7 +44,7 @@ Anne Siegel\textsuperscript{2}\\
 \begin{itemize}
 	\item Metabolic-model reconstruction method produce incomplete networks. Non-functional networks can not be used for predictions. To produce functional networks, extensive manual curation is required.
 	\item Gap-filling methods try to find reactions that are missing from the model, in order to fulfill some condition, like biomass production. One of them is Meneco, which provides a list of reactions that may path a non-functional metabolic model.
-	\item We improved the meneco method, adding restrictions over the phylogenetic (evolutionary) distance between the organism to be model, and the organisms where the patch reactions are found. In this way, meneco++ can find solutions faster, and more accurate than meneco.
+	\item We improved the meneco method, adding restrictions over the phylogenetic (evolutionary) distance between the organism to be model, and the organisms where the patch reactions are found. In this way, \meneco can find solutions faster, and more accurate than meneco.
 	\item We verified the accuracy of our method, removing reactions from a known \emph{E. coli} model, and patching it with reactions from metacyc. 
 \end{itemize}
 
@@ -62,10 +65,10 @@ Meneco is available at (http://pypi.python.org/pypi/meneco). Meneco was used to 
 
 \section{Method}
 
-Meneco++ generate a list of possible patches to a metabolic network, in order to fulfill some criteria. A patch is a reaction, taken from a database of reactions, that can be added to a metabolic model. A useful criterion is that the model is functional, that is, that it can produce biomass starting from species available in the media.
+\Meneco generate a list of possible patches to a metabolic network, in order to fulfill some criteria. A patch is a reaction, taken from a database of reactions, that can be added to a metabolic model. A useful criterion is that the model is functional, that is, that it can produce biomass starting from species available in the media.
 
-Therefore, meneco++ can take a metabolic model, a list of seed species (available in the growth media), a list of target metabolites (the biomass requirements), a database of known reactions, and it will produce a set of answers, where each answer will provide a set of reactions that can patch the incomplete model.
-To reduce the search space, and provide useful answers, meneco++ will give higher priority to reactions that are present in organism phylogenetically close to the modeled organism. To estimate this phylogenetic distance, meneco++ will use the distance between 16S genes.
+Therefore, \meneco can take a metabolic model, a list of seed species (available in the growth media), a list of target metabolites (the biomass requirements), a database of known reactions, and it will produce a set of answers, where each answer will provide a set of reactions that can patch the incomplete model.
+To reduce the search space, and provide useful answers, \meneco will give higher priority to reactions that are present in organism phylogenetically close to the modeled organism. To estimate this phylogenetic distance, \meneco will use the distance between 16S genes.
 
 
 \subsection{ASP based gap-filling}
@@ -83,7 +86,7 @@ Logic program representation: Draft Scope, Potential Scope, Metabolic Network Co
 
 \subsection{Phylogenetic distance}
 
-Meneco++ uses the phylogenetic distance between the modeled organism and the organisms associated to the reactions database. Based on these distances, meneco++ will look for answer sets that, for example, minimize the phylogenetic distances. A patch of reactions from organisms that are phylogenetically close will be preferred over a patch composed of farther reactions.
+\Meneco uses the phylogenetic distance between the modeled organism and the organisms associated to the reactions database. Based on these distances, \meneco will look for answer sets that, for example, minimize the phylogenetic distances. A patch of reactions from organisms that are phylogenetically close will be preferred over a patch composed of farther reactions.
 
 As a first step, distance between the modeled organism and the organisms present in the reaction database, should be computed. For our tests, we obtained the 16S sequences for every organism, and then computed a distance based on the BLAST score of the match between each pair of organisms. This distance was discretized to a number from 0 to 5, where 0 is used when no enough information is present, and 1-5 are a measure of distance, 1 being close, 5 being phylogenetically far.
 
@@ -102,14 +105,14 @@ We tested different optimization strategies that combine these objectives with d
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{patchingStrategies.png}
 	\end{center}
-	\caption{The minimal-cardinality strategy will prefer the (R4, R5) patch to complete the model, while the minimal-sum strategy will prefer the longer (R1, R2, R3) patch.}
+	\caption[]{The minimal-cardinality strategy will prefer the (R4, R5) patch to complete the model, while the minimal-sum strategy will prefer the longer (R1, R2, R3) patch.}
 	\label{fig:figure1}
 \end{figure}
 
 
 \subsection{Bechmark preparation}
 
-Meneco++ uses phylogenetic distances to prioritize reactions that are closer to the reconstructed organism. To do this, meneco++ needs a measure of that distance. We are trying to build a benchmark, using an incomplete E. coli model as the target of reconstruction, and Metacyc as a source of reactions to be used as patches.
+\Meneco uses phylogenetic distances to prioritize reactions that are closer to the reconstructed organism. To do this, \meneco needs a measure of that distance. We are trying to build a benchmark, using an incomplete E. coli model as the target of reconstruction, and Metacyc as a source of reactions to be used as patches.
 
 During our first try at the benchmark, we used existing databases to obtain the phylogenetic distances between E. coli and the rest of the organisms in Metacyc. With this Old Protocol, we covered around 50\% of the needed distances.
 
