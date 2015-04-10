@@ -15,6 +15,7 @@
 \usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{xspace}
+\usepackage{hyperref}
 
 \newcommand{\Meneco}{Meneco$^{++}$\xspace}
 \newcommand{\meneco}{meneco$^{++}$\xspace}
@@ -45,21 +46,34 @@ Anne Siegel\textsuperscript{2}\\
 	\item Metabolic-model reconstruction method produce incomplete networks. Non-functional networks can not be used for predictions. To produce functional networks, extensive manual curation is required.
 	\item Gap-filling methods try to find reactions that are missing from the model, in order to fulfill some condition, like biomass production. One of them is Meneco, which provides a list of reactions that may path a non-functional metabolic model.
 	\item We improved the meneco method, adding restrictions over the phylogenetic (evolutionary) distance between the organism to be model, and the organisms where the patch reactions are found. In this way, \meneco can find solutions faster, and more accurate than meneco.
-	\item We verified the accuracy of our method, removing reactions from a known \emph{E. coli} model, and patching it with reactions from metacyc. 
+	\item We verified the accuracy of our method, removing reactions from a known \emph{E. coli} model, and patching it with reactions from Metacyc. 
 \end{itemize}
 
 
 
 \section{Introduction}
 
-MENECO (metabolic network completion), an approach that uses qualitative constraints to test the producibility of a set of metabolites experimentally measured. This approach is purely qualitative because it studies the topology of a network and the combinatorial interplays between pathways (Schaub and Thiele 2009).
+% REWRITE (from EctoGEM)
+MENECO (metabolic network completion), an approach that uses qualitative constraints to test the producibility of a set of metabolites experimentally measured.
+This approach is purely qualitative because it studies the topology of a network and the combinatorial interplays between pathways (Schaub and Thiele 2009).
 
-To address both scalability issues and characteristics of metabolic networks with a high number of reversible reactions and holes, an automatic tool for gap-finding and gap-filling named MENECO was implemented. This tool analyzes experimental metabolic profiles determined for the species of interest, and suggests reactions to be added to satisfy a topological producibility criterion, thus resulting in a functional metabolic network, i.e. a genome-scale metabolic model.
-This method relies on answer set programming (ASP) to efficiently model and solve the gap-filling issue as a combinatorial optimization problem. ASP is a declarative problem-solving paradigm, in which a problem is encoded as a logic program. MENECO deciphers paths that are necessary to produce a set of targeted metabolites identified either by metabolic profiling or by literature-based analysis. Inputs to the method are: (i) a draft network; (ii) a set of target metabolites that are produced by the organism of interest; (iii) a set of seed nutrients found in the growth media; and (iv) a pool of metabolic reactions available to fill the network (here MetaCyc 17.0). Following a parsimony principle, MENECO 1.2 reports all minimal sets of candidate reactions in the pool that must be added to the draft network to produce the targets from the seeds (Table S1). In addition, MENECO reports the number of unproducible targets before gap-filling, the minimal number of reactions to add to produce the targets and the reactions that are obligatory.
+% REWRITE (from EctoGEM)
+To address both scalability issues and characteristics of metabolic networks with a high number of reversible reactions and holes, an automatic tool for gap-finding and gap-filling named \meneco was implemented.
+This tool analyzes experimental metabolic profiles determined for the species of interest, and suggests reactions to be added to satisfy a topological producibility criterion, thus resulting in a functional metabolic network, i.e. a genome-scale metabolic model.
+This method relies on answer set programming (ASP) to efficiently model and solve the gap-filling issue as a combinatorial optimization problem.
+ASP is a declarative problem-solving paradigm, in which a problem is encoded as a logic program.
+\Meneco deciphers paths that are necessary to produce a set of targeted metabolites identified either by metabolic profiling or by literature-based analysis.
+Inputs to the method are: (i) a draft network; (ii) a set of target metabolites that are produced by the organism of interest; (iii) a set of seed nutrients found in the growth media; and (iv) a pool of metabolic reactions available to fill the network (here MetaCyc 17.0).
+Following a parsimony principle, \meneco 1.2 reports all minimal sets of candidate reactions in the pool that must be added to the draft network to produce the targets from the seeds.
+In addition, \meneco reports the number of unproducible targets before gap-filling, the minimal number of reactions to add to produce the targets and the reactions that are obligatory.
 
-MENECO deciphers paths that are necessary to produce a set of targeted metabolites identified either by metabolic profiling or by literature-based analysis. Inputs to the method are: (i) a draft network; (ii) a set of target metabolites that are produced by the organism of interest; (iii) a set of seed nutrients found in the growth media; and (iv) a pool of metabolic reactions available to fill the network (here MetaCyc 17.0). Following a parsimony principle, MENECO 1.2 reports all minimal sets of candidate reactions in the pool that must be added to the draft network to produce the targets from the seeds (Table S1). In addition, MENECO reports the number of un-producible targets before gap-filling, the minimal number of reactions to add to produce the targets and the reactions that are obligatory.
+% REWRITE (from EctoGEM)
+\Meneco deciphers paths that are necessary to produce a set of targeted metabolites identified either by metabolic profiling or by literature-based analysis.
+Inputs to the method are: (i) a draft network; (ii) a set of target metabolites that are produced by the organism of interest; (iii) a set of seed nutrients found in the growth media; and (iv) a pool of metabolic reactions available to fill the network (here MetaCyc 17.0).
+Following a parsimony principle, \meneco reports all minimal sets of candidate reactions in the pool that must be added to the draft network to produce the targets from the seeds.
+In addition, \meneco reports the number of un-producible targets before gap-filling, the minimal number of reactions to add to produce the targets and the reactions that are obligatory.
 
-Meneco is available at (http://pypi.python.org/pypi/meneco). Meneco was used to finish the \emph{Ectocarpus siliculosus} (EctoGEM) genome-scale metabolic model [Prigent, 2014]
+Meneco is available at (http://pypi.python.org/pypi/menecopp).
 
 
 
@@ -112,24 +126,24 @@ We tested different optimization strategies that combine these objectives with d
 
 \subsection{Bechmark preparation}
 
-\Meneco uses phylogenetic distances to prioritize reactions that are closer to the reconstructed organism. To do this, \meneco needs a measure of that distance. We are trying to build a benchmark, using an incomplete E. coli model as the target of reconstruction, and Metacyc as a source of reactions to be used as patches.
+\Meneco uses phylogenetic distances to prioritize reactions that are closer to the reconstructed organism. To do this, \meneco needs a measure of that distance. We are trying to build a benchmark, using an incomplete \emph{E. coli} model as the target of reconstruction, and Metacyc as a source of reactions to be used as patches.
 
-During our first try at the benchmark, we used existing databases to obtain the phylogenetic distances between E. coli and the rest of the organisms in Metacyc. With this Old Protocol, we covered around 50\% of the needed distances.
+During our first try at the benchmark, we used existing databases to obtain the phylogenetic distances between \emph{E. coli} and the rest of the organisms in Metacyc. With this Old Protocol, we covered around 50\% of the needed distances.
 
 Now, instead of using existing distance databases, we developed a New Protocol that computes distances, based on the edit distances between 16S genes.
 
 
 \subsubsection{Evolutionary distances}
 
-Evolutionary distances will be obtained using the distance provided by the BLAST algorithm, comparing the 16S genes from all of metacyc's organisms. The steps are:
+Evolutionary distances will be obtained using the distance provided by the BLAST algorithm, comparing the 16S genes from all of Metacyc's organisms. The steps are:
 
-1. Obtain 16S sequences from the Ribosomal Database Project (RDP). The sequences can be obtained from: http://rdp.cme.msu.edu/misc/resources.jsp. We used the Unaligned fastas for Bacteria (16S).
+1. Obtain 16S sequences from the Ribosomal Database Project (RDP). The sequences can be obtained from: \url{http://rdp.cme.msu.edu/misc/resources.jsp}. We used the Unaligned fastas for Bacteria (16S).
 
 2. Translate Metacyc organism names to RDP names:
 
 3. Obtain the 16S sequence for all of Metacyc's organisms:
 
-4. BLAST between the 16S target organism (e.q.: *E. coli*) and the rest of the metacyc's 16S, in order to obtain a measure of distance.
+4. BLAST between the 16S target organism (e.q.: \emph{E. coli}) and the rest of the Metacyc's 16S, in order to obtain a measure of distance.
 
 
 
