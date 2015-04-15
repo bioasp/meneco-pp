@@ -79,7 +79,9 @@ Meneco is available at (http://pypi.python.org/pypi/menecopp).
 
 \section{Method}
 
-\Meneco generate a list of possible patches to a metabolic network, in order to fulfill some criteria. A patch is a reaction, taken from a database of reactions, that can be added to a metabolic model. A useful criterion is that the model is functional, that is, that it can produce biomass starting from species available in the media.
+\Meneco generate a list of possible patches to a metabolic network, in order to fulfill some criteria.
+A patch is a reaction, taken from a database of reactions, that can be added to a metabolic model.
+A useful criterion is that the model is functional, that is, that it can produce biomass starting from species available in the media.
 
 Therefore, \meneco can take a metabolic model, a list of seed species (available in the growth media), a list of target metabolites (the biomass requirements), a database of known reactions, and it will produce a set of answers, where each answer will provide a set of reactions that can patch the incomplete model.
 To reduce the search space, and provide useful answers, \meneco will give higher priority to reactions that are present in organism phylogenetically close to the modeled organism. To estimate this phylogenetic distance, \meneco will use the distance between 16S genes.
@@ -87,9 +89,8 @@ To reduce the search space, and provide useful answers, \meneco will give higher
 
 \subsection{ASP based gap-filling}
 
-
+% REWRITE (from Schaub)
 We address the gap-filling problem by taking advantage of the various reasoning modes provided by ASP. On the one hand, we use ASP’s optimization techniques for finding cardinality or subset minimal solutions, respectively. On the other hand, we exploit consequence aggregation for finding metabolites common to all (optimal) solutions or at least one of them, respectively. Moreover, the aforementioned problems are often subject to additional constraint, aiming at the avoidance of side products or producing target products by staying clear from certain seeds, respectively. Finally, the elaboration tolerance of ASP greatly supports the process of drafting metabolic networks involving continuous validation and increasing functionalities stemming from measured data.
-
 
 Answer Set Programming. We refer the reader to [6] for a formal introduction to ASP and concentrate in what follows on aspects relevant to our application. A logic program is a finite set of rules of the form...
 
@@ -153,6 +154,11 @@ Evolutionary distances will be obtained using the distance provided by the BLAST
 \section{Discussion}
 
 \section{References}
+
+
+\url{papers2://publication/uuid/BD8DC574-1726-430D-8B15-3915D61778A7}
+
+\url{papers2://publication/doi/10.1007/978-3-642-40564-8_25}
 
 
 \end{document}
