@@ -79,6 +79,15 @@ Meneco is available at (http://pypi.python.org/pypi/menecopp).
 
 \section{Method}
 
+\begin{figure}[tb]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{figs/overview.pdf}
+	\end{center}
+	\caption[]{The minimal-cardinality strategy will prefer the (R4, R5) patch to complete the model, while the minimal-sum strategy will prefer the longer (R1, R2, R3) patch.}
+	\label{fig:overview}
+\end{figure}
+
+
 \Meneco generate a list of possible patches to a metabolic network, in order to fulfill some criteria.
 A patch is a reaction, taken from a database of reactions, that can be added to a metabolic model.
 A useful criterion is that the model is functional, that is, that it can produce biomass starting from species available in the media.
@@ -118,10 +127,10 @@ We tested different optimization strategies that combine these objectives with d
 
 \begin{figure}[tb]
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{patchingStrategies.png}
+		\includegraphics[width=0.5\textwidth]{figs/patchingStrategies.png}
 	\end{center}
 	\caption[]{The minimal-cardinality strategy will prefer the (R4, R5) patch to complete the model, while the minimal-sum strategy will prefer the longer (R1, R2, R3) patch.}
-	\label{fig:figure1}
+	\label{fig:strategies}
 \end{figure}
 
 
