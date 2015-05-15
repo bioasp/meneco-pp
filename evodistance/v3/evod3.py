@@ -1,29 +1,12 @@
 
 import sys, os
 
-
-# id2node = dict()
-
-# class node(object):
-# 	def __init__(self, id, parent=None):
-# 		self.id = id
-# 		self.parent = parent
-
 parents = dict()
 id2species = dict()
 
-def distance(a,b):
-	assert a != None
-	assert b != None
-
-	if a==b:
-		# print "00000000000"
-		return 0
-	else:
-		# print a,b
-		return 1+distance(parents[a], parents[b])
 
 def parentLines(id):
+	"""Get a list of taxonomic parents from certain node"""
 
 	parentLine = [id]
 
@@ -33,7 +16,16 @@ def parentLines(id):
 
 	return parentLine
 
-def distance2(a,b):
+def distance(a,b):
+	"""Compute the distance between organisms a and b.
+		This is computed as the number of jumps up in the
+		taxonomy tree, needed so both organisms are part
+		of the same subtree. The further a and b are
+		phylogeneticalle appart, the further up in the tree
+		you have to go to find a common node.
+		There is always a common node: the root of the tree.
+		If both nodes are the same, distance returns 0.
+	"""
 	pla = parentLines(a)
 	plb = parentLines(b)
 
@@ -50,13 +42,19 @@ def distance2(a,b):
 
 
 def speciesDistance(a,b):
+	"""Make sure that we are obtaining distances between species,
+	and not from nodes under the species level. Uses data from NCBI
+	categories"""
+
 	a = id2species[a]
 	b = id2species[b]
 
-	return distance2(a,b)
+	return distance(a,b)
 
 
 def parseNodes(nodesFile):
+	"""Parses NCBI nodes (nodes.dmp). Remembers taxids and ids of parents"""
+
 	parents = dict()
 	for line in open(nodesFile):
 		elems = line.split('|')
@@ -67,6 +65,9 @@ def parseNodes(nodesFile):
 
 
 def parseCategories(categoriesFile):
+	"""Parses NCBI data (categories.dmp) that maps TAXIDs under the species line,
+	to their corresponding species TAXID"""
+
 	id2species = dict()
 	for line in open(categoriesFile):
 		elems = line[:-1].split()
@@ -74,6 +75,8 @@ def parseCategories(categoriesFile):
 	return id2species
 
 def parseNames(namesFile):
+	"""Parses TAXID and names from NCBI's names.dmp"""
+
 	name2id = dict()
 	other_kind = ["authority", "type material", "blast name"]
 
@@ -90,6 +93,9 @@ def parseNames(namesFile):
 	return name2id
 
 def parseMetacycNames(metanamesFile):
+	"""Parse a list of Metacyc names. Skip those that do not
+	look like names"""
+
 	metaNames = set()
 	for line in open(metanamesFile):
 		name = line[:-1].lower()
@@ -100,6 +106,9 @@ def parseMetacycNames(metanamesFile):
 
 
 def parseManualMapNames(manualMapFile):
+	"""Read a list of manual mapps of organisms to NCBI's taxid.
+	Do not trust this mapping!
+	"""
 	name2manualid = dict()
 	for line in open(manualMapFile):
 		elems = line[:-1].split('\t')
@@ -108,6 +117,7 @@ def parseManualMapNames(manualMapFile):
 	return name2manualid
 
 def test():
+	"""Test some known distances. Should use unittest."""
 	print speciesDistance("33", "34") # 1
 
 	print distance("1284404", "1280938") #  3
@@ -117,25 +127,26 @@ def test():
 	print speciesDistance("4952", "4932") # yali vs sace, 3
 
 
+# MAIN
 
-# main
+nodesFile = "ncbi/nodes.dmp"
+categoriesFile = "ncbi/categories.dmp"
+namesFile = "ncbi/names.dmp"
 
-nodesFile = sys.argv[1]
+
 parents = parseNodes(nodesFile)
-
-categoriesFile = sys.argv[2]
 id2species = parseCategories(categoriesFile)
-
-namesFile = sys.argv[3]
 name2id = parseNames(namesFile)
 
-metanamesFile = sys.argv[4]
+# ecoli = 562
+reftaxid = sys.argv[1]
+
+metanamesFile = sys.argv[2]
 metaNames = parseMetacycNames(metanamesFile)
 
-manualMapFile = sys.argv[5]
+manualMapFile = sys.argv[3]
 name2manualid = parseManualMapNames(manualMapFile)
 
-ecoli = "380394"
 
 for name in metaNames:
 
@@ -143,14 +154,14 @@ for name in metaNames:
 		if name not in name2manualid:
 			targetid = "["+name+"]"
 			dist = -1
-			print name
+			# print name
 		else:
 			targetid = name2manualid[name]
-			dist = speciesDistance(ecoli, targetid)
+			dist = speciesDistance(reftaxid, targetid)
 	else:
 		targetid = name2id[name]
-		dist = speciesDistance(ecoli, targetid)
+		dist = speciesDistance(reftaxid, targetid)
 
-	# print "%d %s" % (dist, name)
+	print "%d %s" % (dist, name)
 
 
