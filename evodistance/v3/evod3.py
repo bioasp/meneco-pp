@@ -116,6 +116,13 @@ def parseManualMapNames(manualMapFile):
 
 	return name2manualid
 
+
+def parseMetacycReactions(metacycFiles):
+	for line in open(metacycFiles):
+		rid, taxid, orgname = line[:-1].split('\t')
+		print "[%s][%s][%s]" % (rid, taxid, orgname)
+
+
 def test():
 	"""Test some known distances. Should use unittest."""
 	print speciesDistance("33", "34") # 1
@@ -143,6 +150,10 @@ reftaxid = sys.argv[1]
 
 metanamesFile = sys.argv[2]
 metaNames = parseMetacycNames(metanamesFile)
+
+# metacycReactionsFile = sys.argv[2]
+# x = parseMetacycReactions(metacycReactionsFile)
+# sys.exit(0)
 
 manualMapFile = sys.argv[3]
 name2manualid = parseManualMapNames(manualMapFile)
