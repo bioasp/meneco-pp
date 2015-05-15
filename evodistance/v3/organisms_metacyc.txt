@@ -675,7 +675,6 @@ Oncorhynchus mykiss
 Ophiorrhiza japonica
 Ophiorrhiza pumila
 Oryctolagus cuniculus
-Oryza
 Oryza sativa
 Oscillatoria limnetica
 Oxalobacter formigenes
@@ -781,7 +780,6 @@ Pseudanabaena limnetica
 Pseudoalteromonas carrageenovora
 Pseudoalteromonas haloplanktis
 Pseudobutyrivibrio xylanivorans
-Pseudomonas
 Pseudomonas Sp.
 Pseudomonas aeruginosa
 Pseudomonas alcaligenes

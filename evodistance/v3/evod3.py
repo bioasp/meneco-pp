@@ -17,23 +17,52 @@ def distance(a,b):
 	assert b != None
 
 	if a==b:
+		# print "00000000000"
 		return 0
 	else:
+		# print a,b
 		return 1+distance(parents[a], parents[b])
+
+def parentLines(id):
+
+	parentLine = [id]
+
+	while id != "1":
+		id = parents[id]
+		parentLine.append(id)
+
+	return parentLine
+
+def distance2(a,b):
+	pla = parentLines(a)
+	plb = parentLines(b)
+
+	d = 0
+
+	for id in pla:
+		if id in plb:
+			break
+		else:
+			d = d+1
+
+	return d
+
+
 
 def speciesDistance(a,b):
 	a = id2species[a]
 	b = id2species[b]
 
-	return distance(a,b)
+	return distance2(a,b)
 
 
 def parseNodes(nodesFile):
-	parents
+	parents = dict()
 	for line in open(nodesFile):
 		elems = line.split('|')
 		id, parent = elems[0].strip(), elems[1].strip()
 		parents[id] = parent
+
 	return parents
 
 
@@ -60,6 +89,23 @@ def parseNames(namesFile):
 
 	return name2id
 
+def parseMetacycNames(metanamesFile):
+	metaNames = set()
+	for line in open(metanamesFile):
+		name = line[:-1].lower()
+		parts = name.split(" ")
+		if len(parts)>1:
+			metaNames.add(name)
+	return metaNames
+
+
+def parseManualMapNames(manualMapFile):
+	name2manualid = dict()
+	for line in open(manualMapFile):
+		elems = line[:-1].split('\t')
+		name2manualid[elems[0]]=elems[1]
+
+	return name2manualid
 
 def test():
 	print speciesDistance("33", "34") # 1
@@ -83,5 +129,28 @@ id2species = parseCategories(categoriesFile)
 namesFile = sys.argv[3]
 name2id = parseNames(namesFile)
 
-print name2id
+metanamesFile = sys.argv[4]
+metaNames = parseMetacycNames(metanamesFile)
+
+manualMapFile = sys.argv[5]
+name2manualid = parseManualMapNames(manualMapFile)
+
+ecoli = "380394"
+
+for name in metaNames:
+
+	if name not in name2id:
+		if name not in name2manualid:
+			targetid = "["+name+"]"
+			dist = -1
+			print name
+		else:
+			targetid = name2manualid[name]
+			dist = speciesDistance(ecoli, targetid)
+	else:
+		targetid = name2id[name]
+		dist = speciesDistance(ecoli, targetid)
+
+	# print "%d %s" % (dist, name)
+
 
