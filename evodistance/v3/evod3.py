@@ -46,8 +46,11 @@ def speciesDistance(a,b):
 	and not from nodes under the species level. Uses data from NCBI
 	categories"""
 
-	a = id2species[a]
-	b = id2species[b]
+	assert a in parents, "a(%s) not in parents" % a
+	assert b in parents, "b(%s) not in parents" % b
+
+	a = id2species.get(a,a)
+	b = id2species.get(b,b)
 
 	return distance(a,b)
 
@@ -117,10 +120,16 @@ def parseManualMapNames(manualMapFile):
 	return name2manualid
 
 
-def parseMetacycReactions(metacycFiles):
-	for line in open(metacycFiles):
-		rid, taxid, orgname = line[:-1].split('\t')
-		print "[%s][%s][%s]" % (rid, taxid, orgname)
+def parseMerged(mergedFile):
+
+	old2newtaxid = dict()
+
+	for line in open(mergedFile):
+		elems = line[:-1].split('\t')
+		old, new = elems[0],elems[2]
+		old2newtaxid[old] = new
+
+	return old2newtaxid
 
 
 def test():
@@ -139,40 +148,75 @@ def test():
 nodesFile = "ncbi/nodes.dmp"
 categoriesFile = "ncbi/categories.dmp"
 namesFile = "ncbi/names.dmp"
+mergedFile = "ncbi/merged.dmp"
+
 
 
 parents = parseNodes(nodesFile)
 id2species = parseCategories(categoriesFile)
 name2id = parseNames(namesFile)
+old2newtaxid = parseMerged(mergedFile)
+
+# sys.exit(0)
 
 # ecoli = 562
 reftaxid = sys.argv[1]
 
-metanamesFile = sys.argv[2]
-metaNames = parseMetacycNames(metanamesFile)
-
-# metacycReactionsFile = sys.argv[2]
-# x = parseMetacycReactions(metacycReactionsFile)
-# sys.exit(0)
+metacycReactionsFile = sys.argv[2]
 
 manualMapFile = sys.argv[3]
 name2manualid = parseManualMapNames(manualMapFile)
+name2id.update(name2manualid)
 
 
-for name in metaNames:
+# iterate over metacyc's reactions
 
-	if name not in name2id:
-		if name not in name2manualid:
-			targetid = "["+name+"]"
-			dist = -1
-			# print name
-		else:
-			targetid = name2manualid[name]
-			dist = speciesDistance(reftaxid, targetid)
+reaction2distance = dict()
+
+for line in open(metacycReactionsFile):
+	rid, taxid, orgname = line[:-1].split('\t')
+	# print "[%s][%s][%s]" % (rid, taxid, orgname)
+	orgname = orgname.lower()
+
+	d = 1000
+	if taxid.startswith("TAX-"):
+		taxid = taxid[4:]
+		taxid = old2newtaxid.get(taxid, taxid)
+		d = speciesDistance(reftaxid, taxid)
 	else:
-		targetid = name2id[name]
-		dist = speciesDistance(reftaxid, targetid)
+		if orgname in name2id:
+			taxid = name2id[orgname]
+			d = speciesDistance(reftaxid, taxid)
+		else:
+			print "WARNING: org: [%s] not in database" % (orgname)
+			continue
 
-	print "%d %s" % (dist, name)
+	# distace should be valid
+	assert d != 1000
+
+	# print "Distance for reaction [%s] is [%d]" % (rid, d)
+	reaction2distance[rid] = min(distance, reaction2distance.get(rid, 1000))
+
+# output min distance per reaction
+for rid, d in reaction2distance.iteritems():
+	print rid, d
+
+#### Remember, remember:
+
+# for name in metaNames:
+
+# 	if name not in name2id:
+# 		if name not in name2manualid:
+# 			targetid = "["+name+"]"
+# 			dist = -1
+# 			# print name
+# 		else:
+# 			targetid = name2manualid[name]
+# 			dist = speciesDistance(reftaxid, targetid)
+# 	else:
+# 		targetid = name2id[name]
+# 		dist = speciesDistance(reftaxid, targetid)
+
+# 	print "%d %s" % (dist, name)
 
 
