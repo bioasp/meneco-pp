@@ -195,7 +195,7 @@ for line in open(metacycReactionsFile):
 	assert d != 1000
 
 	# print "Distance for reaction [%s] is [%d]" % (rid, d)
-	reaction2distance[rid] = min(distance, reaction2distance.get(rid, 1000))
+	reaction2distance[rid] = min(d, reaction2distance.get(rid, 1000))
 
 # output min distance per reaction
 for rid, d in reaction2distance.iteritems():
