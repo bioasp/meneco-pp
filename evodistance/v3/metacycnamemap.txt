@@ -1,0 +1,30 @@
+streptomyces sp. ll-b7	148376
+clostridium sb4	761961
+ruminococcus sp. po1-3	41978
+rhodococcus sp. mb1 bresler 1999	104109
+streptomyces sp. ma6858	1931
+thalictrum bulgaricum	1084680
+micrococcus percitreus	1271
+mycobacterium sp. nrrl b-3805	1785
+alcaligines sp.	512
+streptococcus allantoicus	29389
+pseudomonas sp. ncib 10590	306
+alcaligenes sp. strain obb65	512
+berberis beaniana	1431200
+pseudomonas sp. no. 53	1294957
+bacillus sp. no. 230	904279
+daphne odora   1077450	
+arthrobacter allantoicus	494023
+corydalis vaginans	38916
+achromobacter superficialis	1255642
+cassia coluteoides	948715
+mycobacterium butyricum	1341646
+alcaligenes faecalis m3a	526870
+comamonas sp. e222c	89687
+dactylosporangium sp. strain rh1	60453
+human immunodeficiency	9606
+hyphomicrobium sp. eg	1561278
+acinetobacter sp. strain 20b	1265579
+berberis wilsoniae	258211
+cucurbita pepo medullosa	184141
+oryza sp.	52841
