@@ -1,0 +1,13 @@
+
+# distances
+python evod3.py 562 reactionsMetacyc_sansEcoli.txt  metacycnamemap.txt > distance_ecoli_metacyc.txt
+awk '{printf("distance(\"%s\",%d).\n",$1,$2)}' distance_ecoli_metacyc.txt > distance_ecoli_metacyc.lp
+
+# seeds
+fgrep "<species " seeds.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/seed("/' > seeds.lp
+
+# targets
+fgrep "<species " target_1.sbml  | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/target("/' > targets.lp
+
+# model
+python sbml2asp.py Ec_iAF1260__sub__950.sbml > ecoli_950.lp
