@@ -1,13 +1,16 @@
 
 # distances
-python evod3.py 562 reactionsMetacyc_sansEcoli.txt  metacycnamemap.txt > distance_ecoli_metacyc.txt
+# python evod3.py 562 reactionsMetacyc_sansEcoli.txt  metacycnamemap.txt > distance_ecoli_metacyc.txt
+cp /Users/nloira/projects/meneco-pp/evodistance/v3/distance_ecoli_metacyc.txt .
 awk '{printf("distance(\"%s\",%d).\n",$1,$2)}' distance_ecoli_metacyc.txt > distance_ecoli_metacyc.lp
 
 # seeds
+cp /Users/nloira/projects/meneco-pp/benchmarkFiles/Ec_iJR904/withMetacycIds/seeds/seeds.sbml .
 fgrep "<species " seeds.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/seed("/' > seeds.lp
 
 # targets
-fgrep "<species " target_1.sbml  | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/target("/' > targets.lp
+cp /Users/nloira/projects/meneco-pp/benchmarkFiles/Ec_iJR904/withMetacycIds/targets/1.sbml targets_1.sbml
+fgrep "<species " targets_1.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/target("/' > targets.lp
 
 # model
-python sbml2asp.py Ec_iAF1260__sub__950.sbml > ecoli_950.lp
+python sbml2asp.py Ec_iJR904__sub__1032.sbml > ecoli_1032.lp
