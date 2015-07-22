@@ -13,4 +13,7 @@ cp /Users/nloira/projects/meneco-pp/benchmarkFiles/Ec_iJR904/withMetacycIds/targ
 fgrep "<species " targets_1.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^/target("/' > targets.lp
 
 # model
-python sbml2asp.py Ec_iJR904__sub__1032.sbml > ecoli_1032.lp
+./sbml2asp.py Ec_iJR904__sub__1032.sbml > draft.lp
+
+# ASP
+gringo3 *lp encodings/options/ireactions.lp | clasp --outf=1 | sed -e 's/ANSWER//g' | gringo3 *.lp encodings/*.lp

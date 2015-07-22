@@ -8,7 +8,7 @@ Created by Nicolas Loira on 2013.
 Copyright (c) 2013 Universidad de Chile.
 """
 
-import sys, os
+import sys
 
 sbmlFile = sys.argv[1]
 
@@ -26,6 +26,14 @@ def getSpecies(line):
 	species=line[posId:lastPos]
 	return species
 
+def is_reversible(line):
+	if 'reversible="true"' in line:
+		return True
+	else:
+		return False
+
+
+
 lastRID="ERROR"
 mode=None
 
@@ -37,6 +45,8 @@ for line in open(sbmlFile):
 		rid=getId(line)
 		print 'reaction("'+rid+'", "draft").'
 		lastRID=rid
+		if is_reversible(line):
+			print 'reversible("'+rid+'").'
 		mode=None
 	elif line.find("<listOfProducts>")>-1:
 		mode="product"

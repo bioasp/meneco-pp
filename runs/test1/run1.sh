@@ -6,8 +6,8 @@ UNCLASP=unclasp
 HCLASP=hclasp
 
 INSTANCE=$1
-IREACTIONS="$INSTANCE/*.lp encodings/ireactions.lp"
-EXPANSION="$INSTANCE/*.lp encodings/card_min_completions_all_targets.lp"
+IREACTIONS="$INSTANCE/*.lp encodings/options/ireactions.lp"
+EXPANSION="$INSTANCE/*.lp encodings/options/card_min_completions_all_targets.lp"
 MINMAX="encodings/minmax.lp"
 MINSUM="encodings/sum.lp"
 MINCARD="encodings/card.lp"

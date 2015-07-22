@@ -1,13 +1,3 @@
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
-distance("WARNING:",0).
 distance("RXN-12158",4).
 distance("D-XYLULOSE-REDUCTASE-RXN",2).
 distance("HALOALKANE-DEHALOGENASE-RXN",5).
