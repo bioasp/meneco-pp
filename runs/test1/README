@@ -15,8 +15,9 @@ fgrep "<species " targets_1.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^
 # model
 ./sbml2asp.py Ec_iJR904__sub__1032.sbml > draft.lp
 
-# ASP
+# run ASP/meneco++ 
+# alias gringo3 "/Users/nloira/install/gringo-3.0.5-source/build/release/bin/gringo"
 gringo3 *lp encodings/options/ireactions.lp | clasp --outf=1 | sed -e 's/ANSWER//g' | gringo3 *.lp encodings/*.lp
 
-# run bash script
+# run old bash script
 ./run1.sh . opt1
