@@ -17,3 +17,6 @@ fgrep "<species " targets_1.sbml | sed -e 's/^.*id="//' -e 's/".*$/")./' -e 's/^
 
 # ASP
 gringo3 *lp encodings/options/ireactions.lp | clasp --outf=1 | sed -e 's/ANSWER//g' | gringo3 *.lp encodings/*.lp
+
+# run bash script
+./run1.sh . opt1
