@@ -226,7 +226,7 @@ seed("M_damp_b").
 seed("M_asp_DASH_L_b").
 seed("M_3ump_b").
 seed("M_chol_b").
-seed("M_k_b"name="M_
+seed("M_k_b").
 seed("M_dad_DASH_2_b").
 seed("M_galctn_DASH_D_b").
 seed("M_cit_b").
