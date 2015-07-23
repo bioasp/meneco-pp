@@ -1,10 +1,11 @@
 import argparse
 import os
 
-minmax  = 0
-minsum  = 10
-mincard = 10
+parser = argparse.ArgumentParser()
+parser.add_argument("mode", help="optimization criteria 1..14")
+args = parser.parse_args()
 
+mode = int(args.mode)
 
 GRINGO = './gringo '
 CLASP  = './clasp '
@@ -32,83 +33,35 @@ for filename in instances:
   os.system(command)
   ireactions = "temp.lp "
 
-  # solve problem 1
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+"| "+CLASP+"0"
-  print command
+  opt_command = {
+    1:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+"| "+CLASP,
+    2:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+"| "+CLASP,
+    3:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+"| "+CLASP,
+    4:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+"| "+CLASP,
+    5:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+"| "+CLASP,
+    6:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+"| "+CLASP,
+    7:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+"| "+CLASP,
+    8:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+"| "+CLASP,
+    9:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+MINCARD+"| "+CLASP,
+    10: GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+MINSUM+"| "+CLASP,
+    11: GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+MINCARD+"| "+CLASP,
+    12: GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+MINSUM+"| "+CLASP,
+    13: GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+MINMAX+"| "+CLASP,
+    14: GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+MINMAX+"| "+CLASP,
+  }
+  command = opt_command[mode]
+  # find optimum
   os.system(command)
-
-  # solve problem 2
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 3
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 4
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 5
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 6
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 7
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 8
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 9
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+MINCARD+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 10
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+MINSUM+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 11
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+MINCARD+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 12
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+MINSUM+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 13
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+MINMAX+"| "+CLASP+"0"
-  print command
-  os.system(command)
-
-  # solve problem 14
-  command = GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+MINMAX+"| "+CLASP+"0"
-  print command
-  os.system(command)
+  # enumerate optimal solutions 
+  os.system(command+"--opt-mode optN")
 
 
 # cleanup
-# os.system("rm temp.lp")
+os.system("rm temp.lp")
 
 # 
 # 
-# case $2 in
+# $2 in
 #     opt1)
 #         $GRINGO $IREACTIONS | $CLASP --outf=1 | sed -e 's/ANSWER//g' | $GRINGO $EXPANSION $MINCARD $MINSUM $MINMAX | $CLASP
 #         ;;
