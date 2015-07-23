@@ -31,23 +31,23 @@ for filename in instances:
   # create ireactions
   command = GRINGO+instance+" "+IREACTIONS+"|"+CLASP+" --outf=1 | sed -e 's/ANSWER//g' > temp.lp"
   os.system(command)
-  ireactions = "temp.lp "
+  ireactions = " temp.lp "
 
   opt_command = {
-    1:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+"| "+CLASP,
-    2:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+"| "+CLASP,
-    3:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+"| "+CLASP,
-    4:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+"| "+CLASP,
-    5:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+"| "+CLASP,
-    6:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+"| "+CLASP,
-    7:  GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+"| "+CLASP,
-    8:  GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+"| "+CLASP,
-    9:  GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINSUM+MINCARD+"| "+CLASP,
-    10: GRINGO+instance+" "+ireactions+EXPANSION+MINMAX+MINCARD+MINSUM+"| "+CLASP,
-    11: GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINMAX+MINCARD+"| "+CLASP,
-    12: GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINMAX+MINSUM+"| "+CLASP,
-    13: GRINGO+instance+" "+ireactions+EXPANSION+MINCARD+MINSUM+MINMAX+"| "+CLASP,
-    14: GRINGO+instance+" "+ireactions+EXPANSION+MINSUM+MINCARD+MINMAX+"| "+CLASP,
+    1:  GRINGO+instance+ireactions+EXPANSION+MINCARD+"| "+CLASP,
+    2:  GRINGO+instance+ireactions+EXPANSION+MINSUM+"| "+CLASP,
+    3:  GRINGO+instance+ireactions+EXPANSION+MINMAX+MINCARD+"| "+CLASP,
+    4:  GRINGO+instance+ireactions+EXPANSION+MINMAX+MINSUM+"| "+CLASP,
+    5:  GRINGO+instance+ireactions+EXPANSION+MINCARD+MINMAX+"| "+CLASP,
+    6:  GRINGO+instance+ireactions+EXPANSION+MINSUM+MINMAX+"| "+CLASP,
+    7:  GRINGO+instance+ireactions+EXPANSION+MINSUM+MINCARD+"| "+CLASP,
+    8:  GRINGO+instance+ireactions+EXPANSION+MINCARD+MINSUM+"| "+CLASP,
+    9:  GRINGO+instance+ireactions+EXPANSION+MINMAX+MINSUM+MINCARD+"| "+CLASP,
+    10: GRINGO+instance+ireactions+EXPANSION+MINMAX+MINCARD+MINSUM+"| "+CLASP,
+    11: GRINGO+instance+ireactions+EXPANSION+MINSUM+MINMAX+MINCARD+"| "+CLASP,
+    12: GRINGO+instance+ireactions+EXPANSION+MINCARD+MINMAX+MINSUM+"| "+CLASP,
+    13: GRINGO+instance+ireactions+EXPANSION+MINCARD+MINSUM+MINMAX+"| "+CLASP,
+    14: GRINGO+instance+ireactions+EXPANSION+MINSUM+MINCARD+MINMAX+"| "+CLASP,
   }
   command = opt_command[mode]
   # find optimum
