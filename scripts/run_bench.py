@@ -56,7 +56,7 @@ for filename in instances:
   
   # find optimum
   print("\n ****** find optimum:")  
-  os.system(command+" --configuration=jumpy --opt-strategy=5 --quiet=1,1,2")
+  os.system(command+" --configuration=jumpy --opt-strategy=5 --quiet=2,1,2")
   # intersection of optimal solutions 
   print("\n ****** compute intersection of optimal solutions:")
   os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode cautious --opt-mode=optN --quiet=1,2,2")
