@@ -51,9 +51,9 @@ for filename in instances:
   }
   command = opt_command[mode]
   # find optimum
-  os.system(command)
+  os.system(command+" --configuration=jumpy --opt-strategy=5 --quiet ")
   # enumerate optimal solutions 
-  os.system(command+"--opt-mode optN")
+  os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode cautious --opt-mode=optN --quiet ")
 
 
 # cleanup
