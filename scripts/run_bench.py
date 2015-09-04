@@ -65,7 +65,7 @@ for filename in instances:
   os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode brave --opt-mode=optN --quiet=1,2,2")
   # enumerate all optimal solutions 
   print("\n ****** enumerate all optimal solutions:")
-  os.system(command+" --configuration jumpy --opt-strategy=5 --opt-mode=optN --quiet=0,0,2")
+  os.system(command+" --configuration jumpy --opt-strategy=5 --opt-mode=optN --quiet=2,2,2")
   
 
 # cleanup
