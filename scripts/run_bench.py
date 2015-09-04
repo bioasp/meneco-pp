@@ -26,8 +26,10 @@ instances =  os.listdir(instance_dir)
 
 for filename in instances:
 
-  instance = os.path.join(instance_dir,filename)	
 
+  print("\n ****** testing instance: ",filename)  
+  instance = os.path.join(instance_dir,filename)	
+  
   # create ireactions
   command = GRINGO+instance+" "+IREACTIONS+"|"+CLASP+" --outf=1 | sed -e 's/ANSWER//g' > temp.lp"
   os.system(command)
@@ -50,11 +52,21 @@ for filename in instances:
     14: GRINGO+instance+ireactions+EXPANSION+MINSUM+MINCARD+MINMAX+"| "+CLASP,
   }
   command = opt_command[mode]
+  
+  
   # find optimum
-  os.system(command+" --configuration=jumpy --opt-strategy=5 --quiet ")
-  # enumerate optimal solutions 
-  os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode cautious --opt-mode=optN --quiet ")
-
+  print("\n ****** find optimum:")  
+  os.system(command+" --configuration=jumpy --opt-strategy=5 --quiet=1,1,2")
+  # intersection of optimal solutions 
+  print("\n ****** compute intersection of optimal solutions:")
+  os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode cautious --opt-mode=optN --quiet=1,2,2")
+  # union of optimal solutions 
+  print("\n ****** compute union of optimal solutions:")
+  os.system(command+" --configuration jumpy --opt-strategy=5 --enum-mode brave --opt-mode=optN --quiet=1,2,2")
+  # enumerate all optimal solutions 
+  print("\n ****** enumerate all optimal solutions:")
+  os.system(command+" --configuration jumpy --opt-strategy=5 --opt-mode=optN --quiet=0,0,2")
+  
 
 # cleanup
 os.system("rm temp.lp")
